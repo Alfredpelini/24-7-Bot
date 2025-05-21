@@ -1,4 +1,4 @@
-name: Deploy Bot
+name: Deploy Bot with Conda
 
 on:
   push:
@@ -10,17 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          auto-update-conda: true
-          activate-environment: base
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
 
-      - name: Update Conda Environment
-        run: conda env update --file environment.yml --name base
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
 
-      - name: Run Bot
-        run: python app.py
+    - name: Check repo files
+      run: |
+        ls -la
+        cat environment.yml
+
+    - name: Install dependencies from environment.yml
+      run: conda env update --file environment.yml --name base
+
+    - name: Run bot
+      run: python app.py
