@@ -8,7 +8,7 @@ import urllib.parse
 import time
 
 # --- Ρυθμίσεις (Αλλάζεις μόνο εδώ) ---
-BOT_TOKEN = os.environ[""]
+BOT_TOKEN = os.environ["8057639115:AAEmlFWfeda3EZgvh-U-ZQkPz8GaHKmtBu4"]
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
 ETHERSCAN_API_KEY = os.environ["9I2CBEHX3N6QJ3S7TBZ1YIUR8W5XKZCU45"]
